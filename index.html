@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #1e1e2f;
+      color: white;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover {
+      background-color: #3a3a5a;
+    }
+
+    .main-content {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    section {
+      display: none;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    /* Home Section */
+    #home {
+      background: linear-gradient(to right, #1c92d2, #f2fcfe);
+      color: black;
+    }
+
+    /* Updated Courses Section */
+    #courses {
+      background: url('https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg') no-repeat center center/cover;
+      color: white;
+      position: relative;
+    }
+
+    #courses::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    #courses > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Contact Section */
+    #contact {
+      background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center/cover;
+      color: white;
+      position: relative;
+    }
+
+    #contact::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    #contact > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .university-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin-bottom: 40px;
+    }
+
+    .university-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .university-card h1 {
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .course-names {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .course-name {
+      background: white;
+      color: black;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .course-container {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .course-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      color: white;
+    }
+
+    .course-card h3 {
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 400px;
+      margin-top: 30px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #0077b6;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #023e8a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>course Section </h2>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('courses')">Courses</a>
+    <a onclick="showSection('contact')">Contact</a>
+    <a onclick="showSection('Roadmap')"> All Section Roadmap</a>
+  </div>
+
+  <div class="main-content">
+    <!-- Home Section -->
+   <section id="home" class="active">
+  <div class="university-card">
+    <img src="https://s3.ap-south-1.amazonaws.com/ct-client-logos/logos/cutm-pkd" alt="University Logo">
+    <h1>Centurion University of Technology and Management</h1>
+  </div>
+
+  <h2>Course Names (click on Course section and see more details about the Course)</h2>
+  <div class="course-names">
+    <div class="course-name">Web Development</div>
+    <div class="course-name">Data Science</div>
+    <div class="course-name">Android Development</div>
+    <div class="course-name">Cyber Security</div>
+    <div class="course-name">AI & Machine Learning</div>
+    <div class="course-name">Cloud Computing</div>
+    <div class="course-name">Data Structure with java</div>
+  </div>
+</section>
+
+    </section>
+
+    <section id="courses">
+  <h1>Courses details (click on course link and join our teligram link and get the course)</h1>
+  <div class="course-container">
+
+    <div class="course-card">
+      <h3>Web Development</h3>
+      <img src="https://w3-lab.com/wp-content/uploads/2019/12/Get-the-Most-Fancied-Web-Development-Services-min-scaled.jpg" alt="Web Development Image" style="width: 100%; height: auto; border-radius: 10px;">
+      <p>HTML, CSS, JS, React And All Backend Part Mongo DB, Node JS, Rest API.</p>
+      <a href="https://youtu.be/Zftx68K-1D4" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 12px;background-color:#00b4d8;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">Course link</a>
+    </div>
+
+    <div class="course-card">
+      <h3>Data Science</h3>
+      <img src="https://www.aiche.org/sites/default/files/images/courses/lead_custom_image_ela271.jpg" alt="Data Science Image" style="width: 100%; height: auto; border-radius: 10px;">
+      <p>Data Analytics, All Math For Data Science, Seaborn, Deep Learning, Pandas, NumPy, ML basics included.</p>
+      <a href="https://youtu.be/X3paOmcrTjQ" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 12px;background-color:#00b4d8;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">Course link</a>
+    </div>
+
+    <div class="course-card">
+      <h3>Android Development</h3>
+      <img src="https://www.theblogfrog.com/wp-content/uploads/2020/06/diana3.png" alt="Android Development Image" style="width: 100%; height: auto; border-radius: 10px;">
+      <p>Kotlin, Firebase</p>
+      <a href="https://youtu.be/fis26HvvDII" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 12px;background-color:#00b4d8;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">Course link</a>
+    </div>
+
+    <div class="course-card">
+      <h3>Cyber Security</h3>
+      <img src="https://tse2.mm.bing.net/th/id/OIP.rcTMAkGuSrxAIhG92RGMEgHaFQ?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cyber Security Image" style="width: 100%; height: auto; border-radius: 10px;">
+      <p>Network Security, Ethical Hacking</p>
+      <a href="https://youtu.be/3Kq1MIfTWCE" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 12px;background-color:#00b4d8;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">Course link</a>
+    </div>
+
+    <div class="course-card">
+      <h3>AI & Machine Learning</h3>
+      <img src="https://www.datasciencecentral.com/wp-content/uploads/2023/03/Machine-Learning-ML-vs-Artificial-Intelligence-AI-Crucial-Differences.png" alt="AI & Machine Learning Image" style="width: 100%; height: auto; border-radius: 10px;">
+      <p>Deep Learning, Neural Networks, AI Algorithms</p>
+      <a href="https://youtu.be/GwIo3gDZCVQ" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 12px;background-color:#00b4d8;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">Course link</a>
+    </div>
+
+    <div class="course-card">
+      <h3>Cloud Computing</h3>
+      <img src="https://th.bing.com/th/id/R.bcaed2483788a001e1b8b032ea906f27?rik=vGmsHFueWU7b5w&riu=http%3a%2f%2f4.bp.blogspot.com%2f-VUh4P9IAaIs%2fUzmr30k4AhI%2fAAAAAAAABRo%2f3d-hslTNsIU%2fs1600%2fcloud.jpg&ehk=zbbTp9WSQHp1T%2b%2fUligZZR5IWrLNz72PzN%2b3lZlZU1Y%3d&risl=&pid=ImgRaw&r=0" alt="Cloud Computing Image" style="width: 100%; height: auto; border-radius: 10px;">
+      <p>AWS, Microsoft Azure, Google Cloud Platform</p>
+      <a href="https://youtu.be/LX3l7LwYslA" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 12px;background-color:#00b4d8;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">Course link</a>
+    </div>
+
+    <div class="course-card">
+      <h3>Data Structure with Java</h3>
+      <img src="https://i.ytimg.com/vi/XyDKchVvlCg/maxresdefault.jpg" style="width: 100%; height: auto; border-radius: 10px;">
+      <p>DSA WITH (Java, C, C++)</p>
+      <a href="https://youtu.be/8hly31xKli0" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 12px;background-color:#00b4d8;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">Course link</a>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Contact Section -->
+    <!-- Contact Section -->
+<!-- Contact Section -->
+<section id="contact">
+  <h1>Contact Us</h1>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="phone" placeholder="Phone Number" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+
+  <div id="formOutputList" style="margin-top: 30px;">
+    <h2>All Submitted Data:</h2>
+    <div id="outputContainer"></div>
+  </div>
+</section>
+
+<!-- Roadmap Section -->
+<section id="Roadmap">
+  <h1>All Course Roadmaps</h1>
+
+  <div class="roadmap-container">
+
+    <div class="roadmap-card">
+      <h3>Web Development Roadmap</h3>
+      <ul>
+        <li>HTML, CSS, JavaScript Basics</li>
+        <li>Responsive Design (Media Queries)</li>
+        <li>JavaScript Advanced (DOM, ES6+)</li>
+        <li>Frontend Framework – React</li>
+        <li>Backend – Node.js, Express.js</li>
+        <li>Database – MongoDB</li>
+        <li>REST API Integration & Deployment</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>Data Science Roadmap</h3>
+      <ul>
+        <li>Python Basics & Libraries (NumPy, Pandas)</li>
+        <li>Data Visualization – Matplotlib, Seaborn</li>
+        <li>Statistics & Probability</li>
+        <li>Machine Learning Algorithms</li>
+        <li>Deep Learning – TensorFlow/Keras</li>
+        <li>Projects & Case Studies</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>Android Development Roadmap</h3>
+      <ul>
+        <li>Java/Kotlin Basics</li>
+        <li>Android Studio Setup</li>
+        <li>UI Components & Activities</li>
+        <li>Navigation & Intents</li>
+        <li>Firebase Integration</li>
+        <li>App Deployment</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>Cyber Security Roadmap</h3>
+      <ul>
+        <li>Networking Basics</li>
+        <li>Linux Commands & Scripting</li>
+        <li>Cryptography Concepts</li>
+        <li>Ethical Hacking Tools</li>
+        <li>Penetration Testing</li>
+        <li>Bug Bounty & CTF Practice</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>AI & ML Roadmap</h3>
+      <ul>
+        <li>Linear Algebra & Calculus Basics</li>
+        <li>Python Libraries (Scikit-Learn, Pandas)</li>
+        <li>Supervised/Unsupervised Learning</li>
+        <li>Neural Networks & Deep Learning</li>
+        <li>Model Evaluation</li>
+        <li>Real Projects using AI</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>Cloud Computing Roadmap</h3>
+      <ul>
+        <li>Cloud Basics – IaaS, PaaS, SaaS</li>
+        <li>AWS – EC2, S3, Lambda</li>
+        <li>Azure & Google Cloud Basics</li>
+        <li>CI/CD Pipelines</li>
+        <li>Cloud Security</li>
+        <li>Deploying Web Apps to Cloud</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>Data Structure with Java Roadmap</h3>
+      <ul>
+        <li>Java Basics (OOPs)</li>
+        <li>Arrays, Strings, Linked Lists</li>
+        <li>Stacks & Queues</li>
+        <li>Trees & Graphs</li>
+        <li>Recursion & Backtracking</li>
+        <li>Time & Space Complexity Analysis</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+  }
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = this.name.value;
+    const email = this.email.value;
+    const phone = this.phone.value;
+    const message = this.message.value;
+
+    // Create new entry
+    const entry = document.createElement('div');
+    entry.style.background = 'rgba(255,255,255,0.2)';
+    entry.style.padding = '15px';
+    entry.style.marginBottom = '15px';
+    entry.style.borderRadius = '10px';
+    entry.style.position = 'relative';
+
+    entry.innerHTML = `
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Message:</strong> ${message}</p>
+      <button class="deleteBtn" style="
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      ">Delete</button>
+    `;
+
+    // Delete functionality
+    entry.querySelector('.deleteBtn').addEventListener('click', function() {
+      entry.remove();
+    });
+
+    document.getElementById('outputContainer').appendChild(entry);
+
+    this.reset();
+  });
+</script>
